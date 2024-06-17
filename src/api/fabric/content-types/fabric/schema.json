@@ -30,9 +30,6 @@
     "Disadvantages": {
       "type": "string"
     },
-    "maintenance": {
-      "type": "string"
-    },
     "Image": {
       "type": "media",
       "multiple": true,
@@ -57,6 +54,15 @@
       "inversedBy": "fabrics"
     },
     "composition": {
+      "type": "string"
+    },
+    "washes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::wash.wash",
+      "inversedBy": "fabrics"
+    },
+    "temperature": {
       "type": "string"
     }
   }

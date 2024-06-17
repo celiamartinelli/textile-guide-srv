@@ -794,18 +794,32 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     singularName: 'category';
     pluralName: 'categories';
     displayName: 'Category';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    Name: Attribute.String;
-    Description: Attribute.String;
+    category_name: Attribute.String;
+    description: Attribute.String;
     fabrics: Attribute.Relation<
       'api::category.category',
       'manyToMany',
       'api::fabric.fabric'
     >;
+    Origin: Attribute.String;
+    second_category: Attribute.Enumeration<
+      ['polym\u00E8res organiques', 'polym\u00E8res inorganiques']
+    >;
+    third_category: Attribute.Enumeration<
+      [
+        'issus du p\u00E9trole ou du charbon',
+        'issu du charbon ou de la chaux',
+        'issu du gaz',
+        'issu d\u2019une r\u00E9action chimique'
+      ]
+    >;
+    name: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -842,7 +856,6 @@ export interface ApiFabricFabric extends Schema.CollectionType {
     Characteristic: Attribute.String;
     Benefit: Attribute.String;
     Disadvantages: Attribute.String;
-    maintenance: Attribute.String;
     Image: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
     products: Attribute.Relation<
       'api::fabric.fabric',
@@ -855,6 +868,12 @@ export interface ApiFabricFabric extends Schema.CollectionType {
       'api::category.category'
     >;
     composition: Attribute.String;
+    washes: Attribute.Relation<
+      'api::fabric.fabric',
+      'manyToMany',
+      'api::wash.wash'
+    >;
+    temperature: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -922,6 +941,36 @@ export interface ApiProductProduct extends Schema.CollectionType {
   };
 }
 
+export interface ApiWashWash extends Schema.CollectionType {
+  collectionName: 'washes';
+  info: {
+    singularName: 'wash';
+    pluralName: 'washes';
+    displayName: 'Wash';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    wash_name: Attribute.String;
+    icone: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    fabrics: Attribute.Relation<
+      'api::wash.wash',
+      'manyToMany',
+      'api::fabric.fabric'
+    >;
+    description: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::wash.wash', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::wash.wash', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -943,6 +992,7 @@ declare module '@strapi/types' {
       'api::category.category': ApiCategoryCategory;
       'api::fabric.fabric': ApiFabricFabric;
       'api::product.product': ApiProductProduct;
+      'api::wash.wash': ApiWashWash;
     }
   }
 }

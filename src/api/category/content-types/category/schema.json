@@ -4,17 +4,18 @@
   "info": {
     "singularName": "category",
     "pluralName": "categories",
-    "displayName": "Category"
+    "displayName": "Category",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "Name": {
+    "category_name": {
       "type": "string"
     },
-    "Description": {
+    "description": {
       "type": "string"
     },
     "fabrics": {
@@ -22,6 +23,28 @@
       "relation": "manyToMany",
       "target": "api::fabric.fabric",
       "mappedBy": "categories"
+    },
+    "Origin": {
+      "type": "string"
+    },
+    "second_category": {
+      "type": "enumeration",
+      "enum": [
+        "polymères organiques",
+        "polymères inorganiques"
+      ]
+    },
+    "third_category": {
+      "type": "enumeration",
+      "enum": [
+        "issus du pétrole ou du charbon",
+        "issu du charbon ou de la chaux",
+        "issu du gaz",
+        "issu d’une réaction chimique"
+      ]
+    },
+    "name": {
+      "type": "string"
     }
   }
 }

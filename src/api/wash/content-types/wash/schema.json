@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "washes",
+  "info": {
+    "singularName": "wash",
+    "pluralName": "washes",
+    "displayName": "Wash",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "wash_name": {
+      "type": "string"
+    },
+    "icone": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "fabrics": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::fabric.fabric",
+      "mappedBy": "washes"
+    },
+    "description": {
+      "type": "string"
+    }
+  }
+}
