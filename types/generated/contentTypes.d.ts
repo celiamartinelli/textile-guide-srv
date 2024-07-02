@@ -807,7 +807,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'manyToMany',
       'api::fabric.fabric'
     >;
-    Origin: Attribute.String;
+    origin: Attribute.String;
     second_category: Attribute.Enumeration<
       ['polym\u00E8res organiques', 'polym\u00E8res inorganiques']
     >;
@@ -850,13 +850,13 @@ export interface ApiFabricFabric extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    Name: Attribute.String;
-    Description: Attribute.String;
-    Origin: Attribute.String;
-    Characteristic: Attribute.String;
-    Benefit: Attribute.String;
-    Disadvantages: Attribute.String;
-    Image: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    name: Attribute.String;
+    description: Attribute.String;
+    origin: Attribute.String;
+    characteristic: Attribute.String;
+    benefit: Attribute.String;
+    disadvantages: Attribute.String;
+    picture_fabric: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     products: Attribute.Relation<
       'api::fabric.fabric',
       'manyToMany',
@@ -904,8 +904,8 @@ export interface ApiProductProduct extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    Name: Attribute.String;
-    Description: Attribute.String;
+    name: Attribute.String;
+    description: Attribute.String;
     fabrics: Attribute.Relation<
       'api::product.product',
       'manyToMany',
@@ -914,6 +914,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     category: Attribute.Enumeration<
       [
         'VETEMENT',
+        'VETEMENT BEBE',
         'ACCESSOIRE DE MODE',
         'LINGE DE MAISON',
         'AMEUBLEMENT',
@@ -921,6 +922,24 @@ export interface ApiProductProduct extends Schema.CollectionType {
         'ENFANT ET BEBE',
         'DECORATION',
         'EXTERIEUR'
+      ]
+    >;
+    icone_product: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    second_category: Attribute.Enumeration<
+      [
+        'Haut',
+        'Bas',
+        "V\u00EAtements d'ext\u00E9rieur",
+        'V\u00EAtements Int\u00E9rieur',
+        'Sous-V\u00EAtement',
+        'Accessoires',
+        'Robes et combinaisons',
+        'Tenues de sport',
+        'V\u00EAtements de nuit',
+        'V\u00EAtements pour B\u00E9b\u00E9'
       ]
     >;
     createdAt: Attribute.DateTime;

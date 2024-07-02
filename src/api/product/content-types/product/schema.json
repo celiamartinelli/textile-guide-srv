@@ -12,10 +12,10 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Name": {
+    "name": {
       "type": "string"
     },
-    "Description": {
+    "description": {
       "type": "string"
     },
     "fabrics": {
@@ -28,6 +28,7 @@
       "type": "enumeration",
       "enum": [
         "VETEMENT",
+        "VETEMENT BEBE",
         "ACCESSOIRE DE MODE",
         "LINGE DE MAISON",
         "AMEUBLEMENT",
@@ -35,6 +36,32 @@
         "ENFANT ET BEBE",
         "DECORATION",
         "EXTERIEUR"
+      ]
+    },
+    "icone_product": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "second_category": {
+      "type": "enumeration",
+      "enum": [
+        "Haut",
+        "Bas",
+        "Vêtements d'extérieur",
+        "Vêtements Intérieur",
+        "Sous-Vêtement",
+        "Accessoires",
+        "Robes et combinaisons",
+        "Tenues de sport",
+        "Vêtements de nuit",
+        "Vêtements pour Bébé"
       ]
     }
   }

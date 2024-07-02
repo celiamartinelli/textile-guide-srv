@@ -24,7 +24,7 @@
       "target": "api::fabric.fabric",
       "mappedBy": "categories"
     },
-    "Origin": {
+    "origin": {
       "type": "string"
     },
     "second_category": {

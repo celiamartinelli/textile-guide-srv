@@ -12,27 +12,27 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Name": {
+    "name": {
       "type": "string"
     },
-    "Description": {
+    "description": {
       "type": "string"
     },
-    "Origin": {
+    "origin": {
       "type": "string"
     },
-    "Characteristic": {
+    "characteristic": {
       "type": "string"
     },
-    "Benefit": {
+    "benefit": {
       "type": "string"
     },
-    "Disadvantages": {
+    "disadvantages": {
       "type": "string"
     },
-    "Image": {
+    "picture_fabric": {
       "type": "media",
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "allowedTypes": [
         "images",
