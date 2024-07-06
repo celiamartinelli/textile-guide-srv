@@ -942,6 +942,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
         'V\u00EAtements pour B\u00E9b\u00E9'
       ]
     >;
+    textile_quantity_required: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

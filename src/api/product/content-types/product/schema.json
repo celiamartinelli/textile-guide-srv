@@ -63,6 +63,9 @@
         "Vêtements de nuit",
         "Vêtements pour Bébé"
       ]
+    },
+    "textile_quantity_required": {
+      "type": "string"
     }
   }
 }
