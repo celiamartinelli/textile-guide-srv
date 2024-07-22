@@ -66,6 +66,12 @@
     },
     "textile_quantity_required": {
       "type": "string"
+    },
+    "supplies_quantities": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::supplies-quantity.supplies-quantity",
+      "inversedBy": "id_supplies_quantities"
     }
   }
 }

@@ -873,7 +873,7 @@ export interface ApiFabricFabric extends Schema.CollectionType {
       'manyToMany',
       'api::wash.wash'
     >;
-    temperature: Attribute.String;
+    consumption: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -943,6 +943,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
       ]
     >;
     textile_quantity_required: Attribute.String;
+    supplies_quantities: Attribute.Relation<
+      'api::product.product',
+      'manyToMany',
+      'api::supplies-quantity.supplies-quantity'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -954,6 +959,50 @@ export interface ApiProductProduct extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSuppliesQuantitySuppliesQuantity
+  extends Schema.CollectionType {
+  collectionName: 'supplies_quantities';
+  info: {
+    singularName: 'supplies-quantity';
+    pluralName: 'supplies-quantities';
+    displayName: 'supplies_quantity';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    main_fabric: Attribute.String;
+    interior_fabric: Attribute.String;
+    interling_fabric: Attribute.String;
+    closure: Attribute.String;
+    fastener: Attribute.String;
+    ribbon: Attribute.String;
+    decoration: Attribute.String;
+    accessory: Attribute.String;
+    id_supplies_quantities: Attribute.Relation<
+      'api::supplies-quantity.supplies-quantity',
+      'manyToMany',
+      'api::product.product'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::supplies-quantity.supplies-quantity',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::supplies-quantity.supplies-quantity',
       'oneToOne',
       'admin::user'
     > &
@@ -1012,6 +1061,7 @@ declare module '@strapi/types' {
       'api::category.category': ApiCategoryCategory;
       'api::fabric.fabric': ApiFabricFabric;
       'api::product.product': ApiProductProduct;
+      'api::supplies-quantity.supplies-quantity': ApiSuppliesQuantitySuppliesQuantity;
       'api::wash.wash': ApiWashWash;
     }
   }

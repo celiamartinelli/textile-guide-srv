@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "supplies_quantities",
+  "info": {
+    "singularName": "supplies-quantity",
+    "pluralName": "supplies-quantities",
+    "displayName": "supplies_quantity",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "main_fabric": {
+      "type": "string"
+    },
+    "interior_fabric": {
+      "type": "string"
+    },
+    "interling_fabric": {
+      "type": "string"
+    },
+    "closure": {
+      "type": "string"
+    },
+    "fastener": {
+      "type": "string"
+    },
+    "ribbon": {
+      "type": "string"
+    },
+    "decoration": {
+      "type": "string"
+    },
+    "accessory": {
+      "type": "string"
+    },
+    "id_supplies_quantities": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "mappedBy": "supplies_quantities"
+    }
+  }
+}

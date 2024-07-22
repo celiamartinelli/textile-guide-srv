@@ -62,7 +62,7 @@
       "target": "api::wash.wash",
       "inversedBy": "fabrics"
     },
-    "temperature": {
+    "consumption": {
       "type": "string"
     }
   }
