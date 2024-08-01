@@ -808,18 +808,6 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'api::fabric.fabric'
     >;
     origin: Attribute.String;
-    second_category: Attribute.Enumeration<
-      ['polym\u00E8res organiques', 'polym\u00E8res inorganiques']
-    >;
-    third_category: Attribute.Enumeration<
-      [
-        'issus du p\u00E9trole ou du charbon',
-        'issu du charbon ou de la chaux',
-        'issu du gaz',
-        'issu d\u2019une r\u00E9action chimique'
-      ]
-    >;
-    name: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -874,6 +862,13 @@ export interface ApiFabricFabric extends Schema.CollectionType {
       'api::wash.wash'
     >;
     consumption: Attribute.String;
+    weight: Attribute.String;
+    weave_of_fabrics: Attribute.Relation<
+      'api::fabric.fabric',
+      'manyToMany',
+      'api::weave-of-fabric.weave-of-fabric'
+    >;
+    appearance: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -885,6 +880,37 @@ export interface ApiFabricFabric extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::fabric.fabric',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLevelSewingLevelSewing extends Schema.CollectionType {
+  collectionName: 'level_sewings';
+  info: {
+    singularName: 'level-sewing';
+    pluralName: 'level-sewings';
+    displayName: 'level_sewing';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name_level: Attribute.String;
+    description: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::level-sewing.level-sewing',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::level-sewing.level-sewing',
       'oneToOne',
       'admin::user'
     > &
@@ -1040,6 +1066,46 @@ export interface ApiWashWash extends Schema.CollectionType {
   };
 }
 
+export interface ApiWeaveOfFabricWeaveOfFabric extends Schema.CollectionType {
+  collectionName: 'weave_of_fabrics';
+  info: {
+    singularName: 'weave-of-fabric';
+    pluralName: 'weave-of-fabrics';
+    displayName: 'weave_of_fabric';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    icone_weave: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    fabrics: Attribute.Relation<
+      'api::weave-of-fabric.weave-of-fabric',
+      'manyToMany',
+      'api::fabric.fabric'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::weave-of-fabric.weave-of-fabric',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::weave-of-fabric.weave-of-fabric',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1060,9 +1126,11 @@ declare module '@strapi/types' {
       'plugin::i18n.locale': PluginI18NLocale;
       'api::category.category': ApiCategoryCategory;
       'api::fabric.fabric': ApiFabricFabric;
+      'api::level-sewing.level-sewing': ApiLevelSewingLevelSewing;
       'api::product.product': ApiProductProduct;
       'api::supplies-quantity.supplies-quantity': ApiSuppliesQuantitySuppliesQuantity;
       'api::wash.wash': ApiWashWash;
+      'api::weave-of-fabric.weave-of-fabric': ApiWeaveOfFabricWeaveOfFabric;
     }
   }
 }

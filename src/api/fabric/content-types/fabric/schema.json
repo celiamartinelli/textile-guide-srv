@@ -64,6 +64,18 @@
     },
     "consumption": {
       "type": "string"
+    },
+    "weight": {
+      "type": "string"
+    },
+    "weave_of_fabrics": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::weave-of-fabric.weave-of-fabric",
+      "mappedBy": "fabrics"
+    },
+    "appearance": {
+      "type": "string"
     }
   }
 }

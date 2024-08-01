@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "weave_of_fabrics",
+  "info": {
+    "singularName": "weave-of-fabric",
+    "pluralName": "weave-of-fabrics",
+    "displayName": "weave_of_fabric",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "icone_weave": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "fabrics": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::fabric.fabric",
+      "inversedBy": "weave_of_fabrics"
+    }
+  }
+}

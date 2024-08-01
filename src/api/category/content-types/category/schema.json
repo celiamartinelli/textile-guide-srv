@@ -26,25 +26,6 @@
     },
     "origin": {
       "type": "string"
-    },
-    "second_category": {
-      "type": "enumeration",
-      "enum": [
-        "polymères organiques",
-        "polymères inorganiques"
-      ]
-    },
-    "third_category": {
-      "type": "enumeration",
-      "enum": [
-        "issus du pétrole ou du charbon",
-        "issu du charbon ou de la chaux",
-        "issu du gaz",
-        "issu d’une réaction chimique"
-      ]
-    },
-    "name": {
-      "type": "string"
     }
   }
 }

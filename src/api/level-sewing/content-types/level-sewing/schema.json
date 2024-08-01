@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "level_sewings",
+  "info": {
+    "singularName": "level-sewing",
+    "pluralName": "level-sewings",
+    "displayName": "level_sewing"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name_level": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    }
+  }
+}
