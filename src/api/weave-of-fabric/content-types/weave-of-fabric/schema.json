@@ -31,6 +31,16 @@
       "relation": "manyToMany",
       "target": "api::fabric.fabric",
       "inversedBy": "weave_of_fabrics"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Étoffes",
+        "Étoffes Dérivés",
+        "Maille",
+        "Étoffes non tissées",
+        "Textiles Recyclés"
+      ]
     }
   }
 }

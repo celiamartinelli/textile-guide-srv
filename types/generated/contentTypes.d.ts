@@ -869,6 +869,11 @@ export interface ApiFabricFabric extends Schema.CollectionType {
       'api::weave-of-fabric.weave-of-fabric'
     >;
     appearance: Attribute.String;
+    level_sewing: Attribute.Relation<
+      'api::fabric.fabric',
+      'manyToMany',
+      'api::level-sewing.level-sewing'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -900,6 +905,16 @@ export interface ApiLevelSewingLevelSewing extends Schema.CollectionType {
   attributes: {
     name_level: Attribute.String;
     description: Attribute.String;
+    product_id: Attribute.Relation<
+      'api::level-sewing.level-sewing',
+      'manyToMany',
+      'api::product.product'
+    >;
+    fabric_id: Attribute.Relation<
+      'api::level-sewing.level-sewing',
+      'manyToMany',
+      'api::fabric.fabric'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -973,6 +988,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'api::product.product',
       'manyToMany',
       'api::supplies-quantity.supplies-quantity'
+    >;
+    level_sewing: Attribute.Relation<
+      'api::product.product',
+      'manyToMany',
+      'api::level-sewing.level-sewing'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1087,6 +1107,15 @@ export interface ApiWeaveOfFabricWeaveOfFabric extends Schema.CollectionType {
       'api::weave-of-fabric.weave-of-fabric',
       'manyToMany',
       'api::fabric.fabric'
+    >;
+    category: Attribute.Enumeration<
+      [
+        '\u00C9toffes',
+        '\u00C9toffes D\u00E9riv\u00E9s',
+        'Maille',
+        '\u00C9toffes non tiss\u00E9es',
+        'Textiles Recycl\u00E9s'
+      ]
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

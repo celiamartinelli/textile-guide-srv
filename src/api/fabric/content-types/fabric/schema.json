@@ -76,6 +76,12 @@
     },
     "appearance": {
       "type": "string"
+    },
+    "level_sewing": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::level-sewing.level-sewing",
+      "inversedBy": "fabric_id"
     }
   }
 }

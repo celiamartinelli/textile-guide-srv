@@ -16,6 +16,18 @@
     },
     "description": {
       "type": "string"
+    },
+    "product_id": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "mappedBy": "level_sewing"
+    },
+    "fabric_id": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::fabric.fabric",
+      "mappedBy": "level_sewing"
     }
   }
 }

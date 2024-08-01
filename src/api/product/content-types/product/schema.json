@@ -72,6 +72,12 @@
       "relation": "manyToMany",
       "target": "api::supplies-quantity.supplies-quantity",
       "inversedBy": "id_supplies_quantities"
+    },
+    "level_sewing": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::level-sewing.level-sewing",
+      "inversedBy": "product_id"
     }
   }
 }
