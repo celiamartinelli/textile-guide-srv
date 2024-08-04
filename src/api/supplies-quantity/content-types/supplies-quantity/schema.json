@@ -41,6 +41,15 @@
       "relation": "manyToMany",
       "target": "api::product.product",
       "mappedBy": "supplies_quantities"
+    },
+    "pocket_fabric": {
+      "type": "string"
+    },
+    "pocket_closure": {
+      "type": "string"
+    },
+    "pocket": {
+      "type": "boolean"
     }
   }
 }

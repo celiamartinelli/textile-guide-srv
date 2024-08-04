@@ -1038,6 +1038,9 @@ export interface ApiSuppliesQuantitySuppliesQuantity
       'manyToMany',
       'api::product.product'
     >;
+    pocket_fabric: Attribute.String;
+    pocket_closure: Attribute.String;
+    pocket: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
