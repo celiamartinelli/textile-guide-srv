@@ -808,6 +808,10 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'api::fabric.fabric'
     >;
     origin: Attribute.String;
+    category_icone: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
