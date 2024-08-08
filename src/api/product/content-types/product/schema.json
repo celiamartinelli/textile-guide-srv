@@ -27,15 +27,17 @@
     "category": {
       "type": "enumeration",
       "enum": [
-        "VETEMENT",
-        "VETEMENT BEBE",
+        "VETEMENT ",
+        "BEBE",
+        "ENFANT",
+        "SOUS-VETEMENT",
         "ACCESSOIRE DE MODE",
         "LINGE DE MAISON",
         "AMEUBLEMENT",
         "TECHNIQUES ET INDUSTRIELS",
-        "ENFANT ET BEBE",
         "DECORATION",
-        "EXTERIEUR"
+        "EXTERIEUR",
+        "EPI (Equipement de Protection Individuelle)"
       ]
     },
     "icone_product": {
@@ -56,12 +58,21 @@
         "Bas",
         "Vêtements d'extérieur",
         "Vêtements Intérieur",
-        "Sous-Vêtement",
-        "Accessoires",
-        "Robes et combinaisons",
-        "Tenues de sport",
+        "Vêtements bébé",
+        "Vêtements enfants",
+        "Vêtements adultes",
+        "Vêtements de sport",
         "Vêtements de nuit",
-        "Vêtements pour Bébé"
+        "Sous-Vêtement",
+        "Robes et Combinaison",
+        "Accessoires",
+        "Sacs",
+        "Écharpes et foulards",
+        "Chapeaux et bonnets",
+        "Gants et mitaines",
+        "Literie",
+        "Serviettes",
+        "Accessoire de jardin"
       ]
     },
     "textile_quantity_required": {
@@ -71,7 +82,7 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::supplies-quantity.supplies-quantity",
-      "inversedBy": "id_supplies_quantities"
+      "inversedBy": "products"
     },
     "level_sewing": {
       "type": "relation",

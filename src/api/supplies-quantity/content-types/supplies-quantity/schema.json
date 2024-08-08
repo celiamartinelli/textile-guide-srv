@@ -36,12 +36,6 @@
     "accessory": {
       "type": "string"
     },
-    "id_supplies_quantities": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::product.product",
-      "mappedBy": "supplies_quantities"
-    },
     "pocket_fabric": {
       "type": "string"
     },
@@ -50,6 +44,15 @@
     },
     "pocket": {
       "type": "boolean"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "mappedBy": "supplies_quantities"
+    },
+    "name_supply": {
+      "type": "string"
     }
   }
 }

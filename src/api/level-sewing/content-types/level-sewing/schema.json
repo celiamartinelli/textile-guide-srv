@@ -4,7 +4,8 @@
   "info": {
     "singularName": "level-sewing",
     "pluralName": "level-sewings",
-    "displayName": "level_sewing"
+    "displayName": "level_sewing",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,7 +16,7 @@
       "type": "string"
     },
     "description": {
-      "type": "string"
+      "type": "text"
     },
     "product_id": {
       "type": "relation",

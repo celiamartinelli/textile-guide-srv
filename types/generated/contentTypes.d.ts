@@ -902,13 +902,14 @@ export interface ApiLevelSewingLevelSewing extends Schema.CollectionType {
     singularName: 'level-sewing';
     pluralName: 'level-sewings';
     displayName: 'level_sewing';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     name_level: Attribute.String;
-    description: Attribute.String;
+    description: Attribute.Text;
     product_id: Attribute.Relation<
       'api::level-sewing.level-sewing',
       'manyToMany',
@@ -958,15 +959,17 @@ export interface ApiProductProduct extends Schema.CollectionType {
     >;
     category: Attribute.Enumeration<
       [
-        'VETEMENT',
-        'VETEMENT BEBE',
+        'VETEMENT ',
+        'BEBE',
+        'ENFANT',
+        'SOUS-VETEMENT',
         'ACCESSOIRE DE MODE',
         'LINGE DE MAISON',
         'AMEUBLEMENT',
         'TECHNIQUES ET INDUSTRIELS',
-        'ENFANT ET BEBE',
         'DECORATION',
-        'EXTERIEUR'
+        'EXTERIEUR',
+        'EPI (Equipement de Protection Individuelle)'
       ]
     >;
     icone_product: Attribute.Media<
@@ -979,12 +982,21 @@ export interface ApiProductProduct extends Schema.CollectionType {
         'Bas',
         "V\u00EAtements d'ext\u00E9rieur",
         'V\u00EAtements Int\u00E9rieur',
-        'Sous-V\u00EAtement',
-        'Accessoires',
-        'Robes et combinaisons',
-        'Tenues de sport',
+        'V\u00EAtements b\u00E9b\u00E9',
+        'V\u00EAtements enfants',
+        'V\u00EAtements adultes',
+        'V\u00EAtements de sport',
         'V\u00EAtements de nuit',
-        'V\u00EAtements pour B\u00E9b\u00E9'
+        'Sous-V\u00EAtement',
+        'Robes et Combinaison',
+        'Accessoires',
+        'Sacs',
+        '\u00C9charpes et foulards',
+        'Chapeaux et bonnets',
+        'Gants et mitaines',
+        'Literie',
+        'Serviettes',
+        'Accessoire de jardin'
       ]
     >;
     textile_quantity_required: Attribute.String;
@@ -1037,14 +1049,15 @@ export interface ApiSuppliesQuantitySuppliesQuantity
     ribbon: Attribute.String;
     decoration: Attribute.String;
     accessory: Attribute.String;
-    id_supplies_quantities: Attribute.Relation<
+    pocket_fabric: Attribute.String;
+    pocket_closure: Attribute.String;
+    pocket: Attribute.Boolean;
+    products: Attribute.Relation<
       'api::supplies-quantity.supplies-quantity',
       'manyToMany',
       'api::product.product'
     >;
-    pocket_fabric: Attribute.String;
-    pocket_closure: Attribute.String;
-    pocket: Attribute.Boolean;
+    name_supply: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1121,7 +1134,8 @@ export interface ApiWeaveOfFabricWeaveOfFabric extends Schema.CollectionType {
         '\u00C9toffes D\u00E9riv\u00E9s',
         'Maille',
         '\u00C9toffes non tiss\u00E9es',
-        'Textiles Recycl\u00E9s'
+        'Textiles Recycl\u00E9s',
+        'Jacquard'
       ]
     >;
     createdAt: Attribute.DateTime;
