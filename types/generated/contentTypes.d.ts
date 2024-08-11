@@ -990,6 +990,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
         'V\u00EAtements adultes',
         'V\u00EAtements de sport',
         'V\u00EAtements de nuit',
+        'V\u00EAtements de bain',
         'Sous-V\u00EAtement',
         'Accessoires Hygi\u00E8ne',
         'Robes et Combinaison',
