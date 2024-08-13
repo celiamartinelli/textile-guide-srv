@@ -1122,12 +1122,27 @@ export interface ApiWeaveOfFabricWeaveOfFabric extends Schema.CollectionType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    name: Attribute.String;
+    name: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     icone_weave: Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
-    >;
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     fabrics: Attribute.Relation<
       'api::weave-of-fabric.weave-of-fabric',
       'manyToMany',
@@ -1142,7 +1157,12 @@ export interface ApiWeaveOfFabricWeaveOfFabric extends Schema.CollectionType {
         'Textiles Recycl\u00E9s',
         'Jacquard'
       ]
-    >;
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1158,6 +1178,12 @@ export interface ApiWeaveOfFabricWeaveOfFabric extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::weave-of-fabric.weave-of-fabric',
+      'oneToMany',
+      'api::weave-of-fabric.weave-of-fabric'
+    >;
+    locale: Attribute.String;
   };
 }
 
