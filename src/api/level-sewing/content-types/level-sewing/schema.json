@@ -29,6 +29,18 @@
       "relation": "manyToMany",
       "target": "api::fabric.fabric",
       "mappedBy": "level_sewing"
+    },
+    "skills": {
+      "type": "text"
+    },
+    "typical_projects": {
+      "type": "string"
+    },
+    "technical": {
+      "type": "text"
+    },
+    "example": {
+      "type": "text"
     }
   }
 }

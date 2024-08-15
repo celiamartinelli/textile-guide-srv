@@ -920,6 +920,10 @@ export interface ApiLevelSewingLevelSewing extends Schema.CollectionType {
       'manyToMany',
       'api::fabric.fabric'
     >;
+    skills: Attribute.Text;
+    typical_projects: Attribute.String;
+    technical: Attribute.Text;
+    example: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
