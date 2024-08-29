@@ -6,8 +6,11 @@ module.exports = ({ env }) => [
     name: "strapi::cors",
     config: {
       enabled: true,
-      // origin: ["http://localhost:19006", "http://192.168.1.73:19006"],
-      origin: ["http://localhost:5173"],
+      // Ajoutez l'URL de votre site Netlify ici
+      origin: [
+        "http://localhost:5173", // Développement local
+        "https://textile-guide.netlify.app", // Votre site Netlify
+      ],
     },
   },
   "strapi::poweredBy",
