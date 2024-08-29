@@ -13,10 +13,10 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "text"
     },
     "description": {
-      "type": "string"
+      "type": "text"
     },
     "fabrics": {
       "type": "relation",
@@ -81,7 +81,7 @@
       ]
     },
     "textile_quantity_required": {
-      "type": "string"
+      "type": "text"
     },
     "supplies_quantities": {
       "type": "relation",

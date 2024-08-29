@@ -34,7 +34,7 @@
       "type": "text"
     },
     "typical_projects": {
-      "type": "string"
+      "type": "text"
     },
     "technical": {
       "type": "text"

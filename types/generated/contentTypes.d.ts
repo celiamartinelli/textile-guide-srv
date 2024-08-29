@@ -590,6 +590,53 @@ export interface PluginContentReleasesReleaseAction
   };
 }
 
+export interface PluginI18NLocale extends Schema.CollectionType {
+  collectionName: 'i18n_locale';
+  info: {
+    singularName: 'locale';
+    pluralName: 'locales';
+    collectionName: 'locales';
+    displayName: 'Locale';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 50;
+        },
+        number
+      >;
+    code: Attribute.String & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUsersPermissionsPermission
   extends Schema.CollectionType {
   collectionName: 'up_permissions';
@@ -741,53 +788,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface PluginI18NLocale extends Schema.CollectionType {
-  collectionName: 'i18n_locale';
-  info: {
-    singularName: 'locale';
-    pluralName: 'locales';
-    collectionName: 'locales';
-    displayName: 'Locale';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
-  attributes: {
-    name: Attribute.String &
-      Attribute.SetMinMax<
-        {
-          min: 1;
-          max: 50;
-        },
-        number
-      >;
-    code: Attribute.String & Attribute.Unique;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'plugin::i18n.locale',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'plugin::i18n.locale',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiCategoryCategory extends Schema.CollectionType {
   collectionName: 'categories';
   info: {
@@ -800,14 +800,14 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    category_name: Attribute.String;
-    description: Attribute.String;
+    category_name: Attribute.Text;
+    description: Attribute.Text;
     fabrics: Attribute.Relation<
       'api::category.category',
       'manyToMany',
       'api::fabric.fabric'
     >;
-    origin: Attribute.String;
+    origin: Attribute.Text;
     category_icone: Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
@@ -842,12 +842,12 @@ export interface ApiFabricFabric extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
-    description: Attribute.String;
-    origin: Attribute.String;
-    characteristic: Attribute.String;
-    benefit: Attribute.String;
-    disadvantages: Attribute.String;
+    name: Attribute.Text;
+    description: Attribute.Text;
+    origin: Attribute.Text;
+    characteristic: Attribute.Text;
+    benefit: Attribute.Text;
+    disadvantages: Attribute.Text;
     picture_fabric: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     products: Attribute.Relation<
       'api::fabric.fabric',
@@ -859,20 +859,20 @@ export interface ApiFabricFabric extends Schema.CollectionType {
       'manyToMany',
       'api::category.category'
     >;
-    composition: Attribute.String;
+    composition: Attribute.Text;
     washes: Attribute.Relation<
       'api::fabric.fabric',
       'manyToMany',
       'api::wash.wash'
     >;
-    consumption: Attribute.String;
-    weight: Attribute.String;
+    consumption: Attribute.Text;
+    weight: Attribute.Text;
     weave_of_fabrics: Attribute.Relation<
       'api::fabric.fabric',
       'manyToMany',
       'api::weave-of-fabric.weave-of-fabric'
     >;
-    appearance: Attribute.String;
+    appearance: Attribute.Text;
     level_sewing: Attribute.Relation<
       'api::fabric.fabric',
       'manyToMany',
@@ -921,7 +921,7 @@ export interface ApiLevelSewingLevelSewing extends Schema.CollectionType {
       'api::fabric.fabric'
     >;
     skills: Attribute.Text;
-    typical_projects: Attribute.String;
+    typical_projects: Attribute.Text;
     technical: Attribute.Text;
     example: Attribute.Text;
     createdAt: Attribute.DateTime;
@@ -954,8 +954,8 @@ export interface ApiProductProduct extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
-    description: Attribute.String;
+    name: Attribute.Text;
+    description: Attribute.Text;
     fabrics: Attribute.Relation<
       'api::product.product',
       'manyToMany',
@@ -1008,7 +1008,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
         'Accessoire de jardin'
       ]
     >;
-    textile_quantity_required: Attribute.String;
+    textile_quantity_required: Attribute.Text;
     supplies_quantities: Attribute.Relation<
       'api::product.product',
       'manyToMany',
@@ -1050,23 +1050,23 @@ export interface ApiSuppliesQuantitySuppliesQuantity
     draftAndPublish: true;
   };
   attributes: {
-    main_fabric: Attribute.String;
-    interior_fabric: Attribute.String;
-    interling_fabric: Attribute.String;
-    closure: Attribute.String;
-    fastener: Attribute.String;
-    ribbon: Attribute.String;
-    decoration: Attribute.String;
-    accessory: Attribute.String;
-    pocket_fabric: Attribute.String;
-    pocket_closure: Attribute.String;
+    main_fabric: Attribute.Text;
+    interior_fabric: Attribute.Text;
+    interling_fabric: Attribute.Text;
+    closure: Attribute.Text;
+    fastener: Attribute.Text;
+    ribbon: Attribute.Text;
+    decoration: Attribute.Text;
+    accessory: Attribute.Text;
+    pocket_fabric: Attribute.Text;
+    pocket_closure: Attribute.Text;
     pocket: Attribute.Boolean;
     products: Attribute.Relation<
       'api::supplies-quantity.supplies-quantity',
       'manyToMany',
       'api::product.product'
     >;
-    name_supply: Attribute.String;
+    name_supply: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1097,14 +1097,14 @@ export interface ApiWashWash extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    wash_name: Attribute.String;
+    wash_name: Attribute.Text;
     icone: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
     fabrics: Attribute.Relation<
       'api::wash.wash',
       'manyToMany',
       'api::fabric.fabric'
     >;
-    description: Attribute.String;
+    description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1132,7 +1132,7 @@ export interface ApiWeaveOfFabricWeaveOfFabric extends Schema.CollectionType {
     };
   };
   attributes: {
-    name: Attribute.String &
+    name: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1205,10 +1205,10 @@ declare module '@strapi/types' {
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
+      'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'plugin::i18n.locale': PluginI18NLocale;
       'api::category.category': ApiCategoryCategory;
       'api::fabric.fabric': ApiFabricFabric;
       'api::level-sewing.level-sewing': ApiLevelSewingLevelSewing;

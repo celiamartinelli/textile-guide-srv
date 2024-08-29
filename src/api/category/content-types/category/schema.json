@@ -13,10 +13,10 @@
   "pluginOptions": {},
   "attributes": {
     "category_name": {
-      "type": "string"
+      "type": "text"
     },
     "description": {
-      "type": "string"
+      "type": "text"
     },
     "fabrics": {
       "type": "relation",
@@ -25,17 +25,18 @@
       "mappedBy": "categories"
     },
     "origin": {
-      "type": "string"
+      "type": "text"
     },
     "category_icone": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     }
   }
 }

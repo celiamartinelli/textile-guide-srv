@@ -13,7 +13,7 @@
   "pluginOptions": {},
   "attributes": {
     "wash_name": {
-      "type": "string"
+      "type": "text"
     },
     "icone": {
       "type": "media",
@@ -33,7 +33,7 @@
       "mappedBy": "washes"
     },
     "description": {
-      "type": "string"
+      "type": "text"
     }
   }
 }

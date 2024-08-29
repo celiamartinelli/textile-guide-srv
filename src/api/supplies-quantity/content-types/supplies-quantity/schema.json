@@ -13,34 +13,34 @@
   "pluginOptions": {},
   "attributes": {
     "main_fabric": {
-      "type": "string"
+      "type": "text"
     },
     "interior_fabric": {
-      "type": "string"
+      "type": "text"
     },
     "interling_fabric": {
-      "type": "string"
+      "type": "text"
     },
     "closure": {
-      "type": "string"
+      "type": "text"
     },
     "fastener": {
-      "type": "string"
+      "type": "text"
     },
     "ribbon": {
-      "type": "string"
+      "type": "text"
     },
     "decoration": {
-      "type": "string"
+      "type": "text"
     },
     "accessory": {
-      "type": "string"
+      "type": "text"
     },
     "pocket_fabric": {
-      "type": "string"
+      "type": "text"
     },
     "pocket_closure": {
-      "type": "string"
+      "type": "text"
     },
     "pocket": {
       "type": "boolean"
@@ -52,7 +52,7 @@
       "mappedBy": "supplies_quantities"
     },
     "name_supply": {
-      "type": "string"
+      "type": "text"
     }
   }
 }

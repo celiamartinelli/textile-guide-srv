@@ -13,22 +13,22 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "text"
     },
     "description": {
-      "type": "string"
+      "type": "text"
     },
     "origin": {
-      "type": "string"
+      "type": "text"
     },
     "characteristic": {
-      "type": "string"
+      "type": "text"
     },
     "benefit": {
-      "type": "string"
+      "type": "text"
     },
     "disadvantages": {
-      "type": "string"
+      "type": "text"
     },
     "picture_fabric": {
       "type": "media",
@@ -54,7 +54,7 @@
       "inversedBy": "fabrics"
     },
     "composition": {
-      "type": "string"
+      "type": "text"
     },
     "washes": {
       "type": "relation",
@@ -63,10 +63,10 @@
       "inversedBy": "fabrics"
     },
     "consumption": {
-      "type": "string"
+      "type": "text"
     },
     "weight": {
-      "type": "string"
+      "type": "text"
     },
     "weave_of_fabrics": {
       "type": "relation",
@@ -75,7 +75,7 @@
       "mappedBy": "fabrics"
     },
     "appearance": {
-      "type": "string"
+      "type": "text"
     },
     "level_sewing": {
       "type": "relation",
