@@ -1,2 +1,0 @@
-RewriteCond %{ENV:HTTPS} !on
-RewriteRule (.*) https://%{http://54.38.35.34}%{REQUEST_URI} [L,R=301]

@@ -10,6 +10,7 @@ module.exports = ({ env }) => [
       origin: [
         "http://localhost:5173", // Développement local
         "https://textile-guide.netlify.app", // Votre site Netlify
+        "*",
       ],
     },
   },
