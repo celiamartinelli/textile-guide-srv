@@ -8,9 +8,8 @@ module.exports = ({ env }) => [
       enabled: true,
       // Ajoutez l'URL de votre site Netlify ici
       origin: [
-        // "http://localhost:5173", // Développement local
-        // "https://textile-guide.netlify.app", // Votre site Netlify
-        "*",
+        "http://localhost:5173", // Développement local
+        "https://textile-guide.netlify.app", // Votre site Netlify
       ],
       headers: [
         "accept-language",
